@@ -163,7 +163,7 @@ async function main() {
     schemaVersion: 1,
     label: "downloads",
     message: formatCompact(total),
-    color: "blue",
+    color: "cornflowerblue",
   };
 
   await writeJSON("badges/downloads.json", badge);
