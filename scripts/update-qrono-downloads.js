@@ -139,6 +139,16 @@ async function getGitHubTotal() {
   }
 }
 
+function formatCompact(n) {
+  if (n >= 1_000_000) {
+    return (n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1) + "M";
+  }
+  if (n >= 1_000) {
+    return (n / 1_000).toFixed(n >= 100_000 ? 0 : 1) + "k";
+  }
+  return String(n);
+}
+
 /* =========================
    Main
 ========================= */
@@ -151,8 +161,8 @@ async function main() {
 
   const badge = {
     schemaVersion: 1,
-    label: "downloads (total)",
-    message: total.toLocaleString(),
+    label: "downloads",
+    message: formatCompact(total),
     color: "blue",
   };
 
