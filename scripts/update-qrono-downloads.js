@@ -29,7 +29,7 @@ async function writeJSON(p, data) {
 async function fetchNpmYear(year) {
   const now = new Date();
   const currentYear = now.getFullYear();
-  const cachePath = `stats/npm/${year}.json`;
+  const cachePath = `stats/qrono/npm/${year}.json`;
 
   if (year !== currentYear && (await exists(cachePath))) {
     return (await readJSON(cachePath)).downloads;
@@ -77,7 +77,7 @@ async function getNpmTotal() {
 }
 
 async function getGitHubTotal() {
-  const cachePath = "stats/github.json";
+  const cachePath = "stats/qrono/github.json";
   let previous = null;
 
   if (await exists(cachePath)) {
@@ -166,7 +166,7 @@ async function main() {
     color: "cornflowerblue",
   };
 
-  await writeJSON("badges/downloads.json", badge);
+  await writeJSON("badges/qrono-downloads.json", badge);
 
   console.log("Total:", total);
 }
