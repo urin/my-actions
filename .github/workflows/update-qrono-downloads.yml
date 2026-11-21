@@ -2,7 +2,7 @@ name: update-qrono-downloads
 
 on:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -23,10 +23,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: node scripts/update-web-visual-editor-installs.js
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add stats badges
-          git diff --cached --quiet || git commit -m "update qrono downloads"
+          git diff --cached --quiet || git commit -m "update badges and stats"
           git push
