@@ -1,4 +1,4 @@
-name: update-qrono-downloads
+name: update-badges-and-stats
 
 on:
   schedule:
